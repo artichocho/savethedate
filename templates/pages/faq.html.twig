@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Clémence &amp; Valentine{% endblock %}
-{% block meta_description %}Foire aux Questions : enfants, animaux, tenue, hébergement et contact pour le mariage de Clémence et Valentine.{% endblock %}
+{% block meta_description %}Foire aux Questions : enfants, animaux, tenue, hébergement, accessibilité PMR et contact pour le mariage de Clémence et Valentine.{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -107,6 +107,18 @@
                 </summary>
                 <div class="faq-answer border-t border-dashed border-cream/15 px-5 text-sm leading-relaxed text-cream/85 md:px-6">
                     Il n’y a <strong class="font-semibold text-cream/95">pas de dress code imposé</strong> - nous souhaitons simplement que vous soyez <em class="italic text-gold/95">à l’aise</em> et que vous vous sentiez beaux et belles. Pour le mood du mariage, imaginez des <em class="italic text-gold">tons automnaux</em>, des matières douces, des touches dorées ou bordeaux&nbsp;: une inspiration, pas une obligation&nbsp;!
+                </div>
+            </details>
+
+            <details class="faq-details group rounded-2xl border border-olive/35 bg-forest/55 shadow-soft backdrop-blur-sm open:border-gold/25">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-5 text-left font-display text-lg text-cream transition hover:text-gold/95 md:px-6 md:py-6 md:text-xl [&::-webkit-details-marker]:hidden">
+                    <span>Le lieu est-il accessible aux personnes à mobilité réduite (PMR)&nbsp;?</span>
+                    <svg class="h-5 w-5 shrink-0 text-gold/80 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer border-t border-dashed border-cream/15 px-5 text-sm leading-relaxed text-cream/85 md:px-6">
+                    Nous tenons à ce que chacun·e puisse vivre le jour J sereinement. Les précisions sur l’<strong class="font-semibold text-cream/95">accessibilité du lieu</strong> (chemins, marches, sanitaires adaptés, stationnement dédié, etc.) suivront dès que le site sera définitivement choisi - vous les retrouverez aussi dans nos <a href="{{ path('app_informations') }}">informations pratiques</a>. Si vous avez un <em class="italic text-gold">besoin particulier</em>, écrivez-nous via la page de <a href="{{ path('app_contact') }}">contact</a>&nbsp;: nous ferons le nécessaire pour vous accompagner au mieux.
                 </div>
             </details>
 
