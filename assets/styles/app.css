@@ -13,7 +13,8 @@
     --color-green-deep: #1a2212;
 
     --font-family-display: "Allura", cursive;
-    --font-family-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+    /* Tailwind v4 uses --font-sans (matches Google Fonts link: Open Sans) */
+    --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
 
     --shadow-soft: 0 12px 40px rgb(0 0 0 / 0.2);
     --shadow-ethereal: 0 8px 48px rgb(0 0 0 / 0.25);
@@ -43,10 +44,11 @@
             linear-gradient(165deg, rgb(40 54 24) 0%, rgb(30 42 22) 45%, rgb(26 34 18) 100%);
     }
 
+    /* Allura pour les titres — sauf .informations-faq-heading (Open Sans, voir aussi style inline sur la page) */
     h1,
-    h2,
     h3,
-    h4 {
+    h4,
+    h2:not(.informations-faq-heading) {
         font-family: var(--font-family-display), cursive;
         font-weight: 400;
         letter-spacing: 0.03em;
@@ -176,4 +178,3 @@
 body:has(#nav-toggle:checked) {
     overflow: hidden;
 }
-

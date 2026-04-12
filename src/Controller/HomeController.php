@@ -22,6 +22,12 @@ final class HomeController extends AbstractController
         return $this->render('pages/informations.html.twig');
     }
 
+    #[Route('/foire-aux-questions', name: 'app_faq')]
+    public function faq(): Response
+    {
+        return $this->render('pages/faq.html.twig');
+    }
+
     #[Route('/nous-contacter', name: 'app_contact')]
     public function contact(): Response
     {

@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clémence &amp; Valentine{% endblock %}
+{% block meta_description %}Foire aux Questions : enfants, animaux, tenue, hébergement et contact pour le mariage de Clémence et Valentine.{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .faq-details > summary {
+            list-style: none;
+            box-sizing: border-box;
+            min-height: 4.875rem;
+        }
+        @media (min-width: 768px) {
+            .faq-details > summary {
+                min-height: 5.375rem;
+            }
+        }
+        .faq-details summary::-webkit-details-marker {
+            display: none;
+        }
+        /* Marge entre <details> : évite les nœuds texte Twig qui cassent space-y (:last-child). */
+        .faq-list > .faq-details:not(:last-of-type) {
+            margin-bottom: 0.75rem;
+        }
+        @media (min-width: 768px) {
+            .faq-list > .faq-details:not(:last-of-type) {
+                margin-bottom: 1rem;
+            }
+        }
+        /* Padding vertical du bloc réponse (haut = bas) — spécificité > utilitaires Tailwind. */
+        article .faq-details .faq-answer {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            article .faq-details .faq-answer {
+                padding-top: 1.75rem;
+                padding-bottom: 1.75rem;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <article aria-labelledby="page-title">
+        <h1 id="page-title" class="mb-3 text-center text-4xl md:text-[2.75rem]">Foire aux Questions</h1>
+        <p class="mb-12 text-center text-sm font-light text-cream/65 md:mb-14">
+            Quelques réponses en attendant le grand jour - les détails suivront avec le lieu et le programme définitifs.
+        </p>
+
+        <div class="faq-list mb-8 md:mb-10">
+            <details class="faq-details group rounded-2xl border border-olive/35 bg-forest/55 shadow-soft backdrop-blur-sm open:border-gold/25">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-5 text-left font-display text-lg text-cream transition hover:text-gold/95 md:px-6 md:py-6 md:text-xl [&::-webkit-details-marker]:hidden">
+                    <span>Les enfants sont-ils invités&nbsp;?</span>
+                    <svg class="h-5 w-5 shrink-0 text-gold/80 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer border-t border-dashed border-cream/15 px-5 text-sm leading-relaxed text-cream/85 md:px-6">
+                    <em class="italic text-gold">À préciser</em> - cela dépendra notamment du lieu et du déroulé que nous retiendrons. Nous vous communiquerons notre souhait (invitation des enfants ou célébration réservée aux adultes, etc.) en temps utile, avec le faire-part ou un message personnel.
+                </div>
+            </details>
+
+            <details class="faq-details group rounded-2xl border border-olive/35 bg-forest/55 shadow-soft backdrop-blur-sm open:border-gold/25">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-5 text-left font-display text-lg text-cream transition hover:text-gold/95 md:px-6 md:py-6 md:text-xl [&::-webkit-details-marker]:hidden">
+                    <span>Les animaux sont-ils acceptés&nbsp;?</span>
+                    <svg class="h-5 w-5 shrink-0 text-gold/80 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer border-t border-dashed border-cream/15 px-5 text-sm leading-relaxed text-cream/85 md:px-6">
+                    <em class="italic text-gold">À confirmer</em> selon les règles du lieu (intérieur / extérieur, allergies, etc.). Nous vous tiendrons informé·e·s dès que nous aurons tranché - n’hésitez pas à nous écrire si votre compagnon à quatre pattes est indispensable à votre présence.
+                </div>
+            </details>
+
+            <details class="faq-details group rounded-2xl border border-olive/35 bg-forest/55 shadow-soft backdrop-blur-sm open:border-gold/25">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-5 text-left font-display text-lg text-cream transition hover:text-gold/95 md:px-6 md:py-6 md:text-xl [&::-webkit-details-marker]:hidden">
+                    <span>Puis-je venir avec un +1&nbsp;?</span>
+                    <svg class="h-5 w-5 shrink-0 text-gold/80 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer border-t border-dashed border-cream/15 px-5 text-sm leading-relaxed text-cream/85 md:px-6">
+                    Les invitations seront <strong class="font-semibold text-cream/95">nominatives</strong>. Si un accompagnant est prévu pour vous, ce sera indiqué sur le faire-part ou confirmé directement avec vous - merci de ne pas venir avec une personne non mentionnée sans nous en avoir parlé avant.
+                </div>
+            </details>
+
+            <details class="faq-details group rounded-2xl border border-olive/35 bg-forest/55 shadow-soft backdrop-blur-sm open:border-gold/25">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-5 text-left font-display text-lg text-cream transition hover:text-gold/95 md:px-6 md:py-6 md:text-xl [&::-webkit-details-marker]:hidden">
+                    <span>Où se loger le jour J&nbsp;?</span>
+                    <svg class="h-5 w-5 shrink-0 text-gold/80 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer border-t border-dashed border-cream/15 px-5 text-sm leading-relaxed text-cream/85 md:px-6">
+                    Nous préparerons une <a href="{{ path('app_informations') }}">liste d’hébergements</a> et suggestions autour du lieu - pour l’instant tout est en <em class="italic text-gold">placeholder</em> jusqu’à la confirmation définitive du site. Pensez à réserver tôt si vous venez de loin&nbsp;!
+                </div>
+            </details>
+
+            <details class="faq-details group rounded-2xl border border-olive/35 bg-forest/55 shadow-soft backdrop-blur-sm open:border-gold/25">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-5 text-left font-display text-lg text-cream transition hover:text-gold/95 md:px-6 md:py-6 md:text-xl [&::-webkit-details-marker]:hidden">
+                    <span>Y a-t-il un dress code&nbsp;?</span>
+                    <svg class="h-5 w-5 shrink-0 text-gold/80 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer border-t border-dashed border-cream/15 px-5 text-sm leading-relaxed text-cream/85 md:px-6">
+                    Il n’y a <strong class="font-semibold text-cream/95">pas de dress code imposé</strong> - nous souhaitons simplement que vous soyez <em class="italic text-gold/95">à l’aise</em> et que vous vous sentiez beaux et belles. Pour le mood du mariage, imaginez des <em class="italic text-gold">tons automnaux</em>, des matières douces, des touches dorées ou bordeaux&nbsp;: une inspiration, pas une obligation&nbsp;!
+                </div>
+            </details>
+
+            <details class="faq-details group rounded-2xl border border-olive/35 bg-forest/55 shadow-soft backdrop-blur-sm open:border-gold/25">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-5 text-left font-display text-lg text-cream transition hover:text-gold/95 md:px-6 md:py-6 md:text-xl [&::-webkit-details-marker]:hidden">
+                    <span>Qui contacter en cas d’urgence, d’imprévu ou pour des informations sur place&nbsp;?</span>
+                    <svg class="h-5 w-5 shrink-0 text-gold/80 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </summary>
+                <div class="faq-answer border-t border-dashed border-cream/15 px-5 text-sm leading-relaxed text-cream/85 md:px-6">
+                    <p>En amont du mariage, passez par la page de <a href="{{ path('app_contact') }}">contact</a> - nous répondrons au plus vite. </p>
+                    <p>Pour le jour même, nous indiquerons <em class="italic text-gold">un contact dédié</em> (coordinateur·rice, témoins, etc.) dès que l’organisation le permettra&nbsp;; les numéros utiles figureront sur le programme ou le faire-part.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="rounded-2xl border border-olive/35 bg-forest/55 p-8 text-center shadow-soft backdrop-blur-sm md:p-10">
+            <p class="m-0 text-sm leading-relaxed text-cream/80">
+                Si vous avez <strong class="font-semibold text-cream/90">toute autre question</strong> ou besoin d’éclaircissements, vous pouvez nous contacter sur la page
+                <a href="{{ path('app_contact') }}" class="contact-action inline font-semibold text-gold no-underline transition hover:text-cream">Nous Contacter</a>.
+            </p>
+        </div>
+    </article>
+{% endblock %}

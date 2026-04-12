@@ -75,14 +75,14 @@
 
 {% block body %}
     <article aria-labelledby="page-title">
-        <h1 id="page-title" class="mb-3 text-center text-4xl md:text-[2.75rem]">Informations pratiques</h1>
-        <p class="mb-10 text-center text-sm font-light text-cream/65">Tout sera précisé en temps voulu — voici ce que nous pouvons déjà partager.</p>
+        <h1 id="page-title" class="mb-3 text-center text-4xl md:text-[2.75rem]">Informations Pratiques</h1>
+        <p class="mb-10 text-center text-sm font-light text-cream/65">Tout sera précisé en temps voulu - voici ce que nous pouvons déjà partager.</p>
 
         <div class="rounded-2xl border border-olive/35 bg-forest/55 p-7 shadow-soft backdrop-blur-sm md:p-9 mb-10">
             <ul class="m-0 list-none space-y-0 divide-y divide-dashed divide-cream/15 p-0">
                 <li class="flex flex-col gap-1 py-4 first:pt-0 sm:flex-row sm:items-start sm:gap-4">
                     <span class="shrink-0 pt-0.5 font-display text-lg text-gold/90 sm:w-[10rem]">Date</span>
-                    <span class="text-cream/85"><em class="italic text-gold">À confirmer</em> — le jour J sera communiqué prochainement.</span>
+                    <span class="text-cream/85"><em class="italic text-gold">À confirmer</em> - le jour J sera communiqué prochainement.</span>
                 </li>
                 <li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-start sm:gap-4">
                     <span class="shrink-0 pt-0.5 font-display text-lg text-gold/90 sm:w-[10rem]">Lieu</span>
@@ -90,7 +90,19 @@
                 </li>
                 <li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-start sm:gap-4">
                     <span class="shrink-0 pt-0.5 font-display text-lg text-gold/90 sm:w-[10rem]">Horaires</span>
-                    <span class="text-cream/85"><em class="italic text-gold">Placeholder</em> — programme détaillé à suivre.</span>
+                    <span class="text-cream/85"><em class="italic text-gold">Placeholder</em> - programme détaillé à suivre.</span>
+                </li>
+                <li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-start sm:gap-4">
+                    <span class="shrink-0 pt-0.5 font-display text-lg text-gold/90 sm:w-[10rem]">Parking</span>
+                    <span class="text-cream/85">Un parking sur place est prévu - <em class="italic text-gold">nombre de places, gratuité et modalités d’accès</em> seront précisés lorsque le lieu sera définitivement confirmé.</span>
+                </li>
+                <li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-start sm:gap-4">
+                    <span class="shrink-0 pt-0.5 font-display text-lg text-gold/90 sm:w-[10rem]">Hébergement</span>
+                    <span class="text-cream/85">Nous partagerons une liste d’<em class="italic text-gold">options d’hébergement</em> à proximité (hôtels, chambres d’hôtes, gîtes, etc.) - <em class="italic text-gold">contenu à venir</em>.</span>
+                </li>
+                <li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-start sm:gap-4">
+                    <span class="shrink-0 pt-0.5 font-display text-lg text-gold/90 sm:w-[10rem]">Accessibilité PMR</span>
+                    <span class="text-cream/85">Nous souhaitons que chacun·e puisse profiter du jour J en toute sérénité. Les détails sur l’<em class="italic text-gold">accessibilité du lieu</em> (chemins, sanitaires, stationnement dédié, etc.) seront ajoutés dès que nous aurons les informations complètes du site.</span>
                 </li>
             </ul>
         </div>
@@ -104,9 +116,9 @@
                     Itinéraire - Google&nbsp;Maps
                 </a>
                 <a href="{{ link_apple }}" rel="noopener noreferrer" target="_blank" class="contact-action inline-flex items-center justify-center gap-2 rounded-xl border border-cream/15 bg-forest/60 px-5 py-3 text-center text-sm font-semibold text-cream no-underline transition hover:border-gold/50 hover:bg-olive/35">
-                    {# Apple mark (bitten apple) — monochrome for UI #}
+                    {# Apple mark (bitten apple) - monochrome for UI #}
                     <svg class="h-5 w-5 shrink-0 text-gold" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-                    Intinéraire - Apple&nbsp;Maps
+                    Itinéraire - Apple&nbsp;Maps
                 </a>
                 <a href="{{ link_waze }}" rel="noopener noreferrer" target="_blank" class="contact-action inline-flex items-center justify-center gap-2 rounded-xl border border-cream/15 bg-forest/60 px-5 py-3 text-center text-sm font-semibold text-cream no-underline transition hover:border-gold/50 hover:bg-olive/35">
                     {# Waze-style blob + face (gold like other map icons; dark details for contrast) #}
@@ -115,5 +127,17 @@
                 </a>
             </div>
         </section>
+
+        <div class="mb-10 rounded-2xl border border-olive/35 bg-forest/55 p-8 shadow-soft backdrop-blur-sm md:p-10">
+            <h2 class="informations-faq-heading mb-3 text-center text-xl uppercase tracking-[0.22em] md:text-2xl lg:tracking-[0.28em]" style="font-family: 'Open Sans', ui-sans-serif, system-ui, sans-serif; font-weight: 600;">Foire aux Questions</h2>
+            <p class="mx-auto mb-6 max-w-2xl text-center text-sm leading-relaxed text-cream/75">
+                Réponses rapides aux questions les plus fréquentes, à retrouver sur la page dédiée.
+            </p>
+            <p class="text-center">
+                <a href="{{ path('app_faq') }}" class="contact-action inline-flex items-center justify-center rounded-xl border border-cream/15 bg-forest/60 px-5 py-3 text-center text-sm font-semibold text-cream no-underline transition hover:border-gold/50 hover:bg-olive/35">
+                    Voir la FAQ
+                </a>
+            </p>
+        </div>
     </article>
 {% endblock %}
