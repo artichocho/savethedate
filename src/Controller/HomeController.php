@@ -57,4 +57,10 @@ final class HomeController extends AbstractController
     {
         return $this->render('pages/liste_mariage.html.twig');
     }
+
+    #[Route('/presentations', name: 'app_presentations')]
+    public function presentations(): Response
+    {
+        return $this->render('pages/presentations.html.twig');
+    }
 }

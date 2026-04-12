@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Présentations — Clémence &amp; Valentine{% endblock %}
+{% block meta_description %}Qui sommes-nous, notre histoire, et les témoins et demoiselles et demoiseaux d’honneur du mariage de Clémence et Valentine.{% endblock %}
+
+{% block body %}
+    <article aria-labelledby="page-title">
+        <figure class="presentation-couple-breakout relative m-0 -mt-10 mb-10 md:-mt-14 md:mb-12">
+            <div class="presentation-couple-shot relative aspect-[4/1] w-full overflow-hidden md:aspect-[5/1]">
+                <img
+                    src="{{ asset('images/presentation.jpg') }}"
+                    alt="Clémence et Valentine"
+                    class="presentation-couple-shot__img"
+                    width="2000"
+                    height="500"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                >
+                {% include '_partials/leaves_presentation_hero.html.twig' with { layer: 'under' } only %}
+            </div>
+            {% include '_partials/leaves_presentation_hero.html.twig' with { layer: 'over' } only %}
+        </figure>
+
+        <h1 id="page-title" class="mb-3 text-center text-4xl md:text-[2.75rem]">Présentations</h1>
+        <p class="mb-12 text-center text-sm font-light text-cream/65">Un peu de nous, et ceux qui nous entourent pour le grand jour.</p>
+
+        <section class="mb-14 scroll-reveal" aria-labelledby="notre-histoire-heading">
+            <h2 id="notre-histoire-heading" class="presentation-section-heading mb-6 text-center">Notre histoire</h2>
+            <div class="space-y-4 text-[0.95rem] leading-relaxed text-cream/85">
+                <p>
+                    Ici, racontez comment vous vous êtes rencontrées, ce qui vous lie, les moments qui comptent pour vous — ce texte est un <em class="text-gold/95 not-italic">placeholder</em> à remplacer par votre propre histoire.
+                </p>
+                <p>
+                    Vous pouvez y ajouter autant de paragraphes que nécessaire : voyages, anecdotes, la demande… tout ce qui vous ressemble.
+                </p>
+            </div>
+        </section>
+
+        <section class="scroll-reveal" aria-labelledby="trombi-heading">
+            <h2 id="trombi-heading" class="presentation-section-heading mb-2 text-center">Trombinoscope</h2>
+            <p class="mx-auto mb-10 max-w-2xl text-center text-sm text-cream/65">
+                Rencontrez une parties des personnes qui nous entoureront pour ce grand jour.
+            </p>
+
+            <div class="space-y-14">
+                <div>
+                    <h3 class="presentation-section-heading presentation-section-heading--sub mb-6 text-center">Autour de Clémence</h3>
+                    {# Photos : fichiers dans assets/images/ (ex. assets/images/trombi/camille.jpg) + clé image: 'images/trombi/camille.jpg' sur chaque personne #}
+                    <div class="photo-grid grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                        {% include 'pages/_presentations_trombi_cards.html.twig' with {
+                            people: [
+                                { role: 'Témoin', is_temoin: true, name: 'Camille C.', phrase: 'Quelques mots sur cette personne.' },
+                                { role: 'Témoin', is_temoin: true, name: 'Raphaël D.', phrase: 'Une courte phrase de présentation.' },
+                                { role: 'Demoiseau d’honneur', is_temoin: false, name: 'Thomas T.', phrase: 'Texte d’accroche à personnaliser.' },
+                                { role: 'Demoiseau d’honneur', is_temoin: false, name: 'Titouan de P.', phrase: 'Texte d’accroche à personnaliser.' },
+                            ],
+                        } only %}
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="presentation-section-heading presentation-section-heading--sub mb-6 text-center">Autour de Valentine</h3>
+                    <div class="photo-grid grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                        {% include 'pages/_presentations_trombi_cards.html.twig' with {
+                            people: [
+                                { role: 'Témoin', is_temoin: true, name: 'Doulce de D.', phrase: 'Quelques mots sur cette personne.' },
+                                { role: 'Témoin', is_temoin: true, name: 'Chaïma M.', phrase: 'Une courte phrase de présentation.' },
+                                { role: 'Demoiselle d’honneur', is_temoin: false, name: 'Isabelle W.', phrase: 'Texte d’accroche à personnaliser.' },
+                                { role: 'Demoiselle d’honneur', is_temoin: false, name: 'Margaux L.', phrase: 'Texte d’accroche à personnaliser.' },
+                            ],
+                        } only %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+{% endblock %}
