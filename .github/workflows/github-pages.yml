@@ -1,0 +1,83 @@
+# Build a static snapshot of the Symfony app and deploy to GitHub Pages (project site).
+#
+# Setup (once per repo): Settings → Pages → Source: GitHub Actions.
+#
+# Paths match https://<owner>.github.io/<repo>/ via GITHUB_PAGES_BASE_PATH=/<repo>.
+
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: ctype, iconv
+          tools: composer:v2
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Build production assets and export static site
+        env:
+          APP_ENV: prod
+          APP_DEBUG: '0'
+          # Optional repo secret; if unset, a one-off secret is used for this run only.
+          APP_SECRET: ${{ secrets.APP_SECRET }}
+          GITHUB_PAGES_BASE_PATH: /${{ github.event.repository.name }}
+          DEFAULT_URI: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: |
+          set -euo pipefail
+          if [ -z "${APP_SECRET:-}" ]; then export APP_SECRET="$(openssl rand -hex 32)"; fi
+          export APP_ENV APP_DEBUG APP_SECRET GITHUB_PAGES_BASE_PATH DEFAULT_URI
+          REPO_SLUG="${GITHUB_PAGES_BASE_PATH#/}"
+          php bin/console cache:warmup --env=prod --no-debug
+          php bin/console tailwind:build --env=prod --no-debug
+          php bin/console asset-map:compile --env=prod --no-debug
+          php -S 127.0.0.1:8080 -t public public/ci-github-pages-router.php &
+          SERVER_PID=$!
+          for i in $(seq 1 30); do
+            if curl -fsS -o /dev/null "http://127.0.0.1:8080${GITHUB_PAGES_BASE_PATH}/" 2>/dev/null; then break; fi
+            if [ "$i" -eq 30 ]; then echo "PHP server did not become ready in time." >&2; exit 1; fi
+            sleep 0.2
+          done
+          mkdir -p _site
+          curl -fsS "http://127.0.0.1:8080${GITHUB_PAGES_BASE_PATH}/" -o _site/index.html
+          for path in informations nous-contacter liste-mariage; do
+            mkdir -p "_site/$path"
+            curl -fsS "http://127.0.0.1:8080${GITHUB_PAGES_BASE_PATH}/$path" -o "_site/$path/index.html"
+          done
+          rsync -a public/favicon public/logo _site/
+          rsync -a "public/${REPO_SLUG}/assets/" _site/assets/
+          kill "$SERVER_PID" 2>/dev/null || true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

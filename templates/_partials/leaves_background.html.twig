@@ -1,0 +1,125 @@
+{# Feuillages décoratifs (branchages) — .leaf-float dans app.css #}
+<div class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_-25%,rgb(96_108_56/0.35),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_65%_45%_at_100%_45%,rgb(40_54_24/0.55),transparent_52%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_55%_40%_at_0%_75%,rgb(96_108_56/0.2),transparent_48%)]"></div>
+
+    {# Dégradés + formes de feuilles réutilisables (même document pour <use>) #}
+    <svg class="absolute h-0 w-0 overflow-hidden" width="0" height="0" focusable="false">
+        <defs>
+            <linearGradient id="bg-leaf-grad" x1="15%" y1="0%" x2="85%" y2="100%">
+                <stop offset="0%" stop-color="#a4b574"/>
+                <stop offset="42%" stop-color="#6f7d46"/>
+                <stop offset="100%" stop-color="#3e4a28"/>
+            </linearGradient>
+            <linearGradient id="bg-leaf-grad-young" x1="20%" y1="0%" x2="80%" y2="100%">
+                <stop offset="0%" stop-color="#c5d49a"/>
+                <stop offset="100%" stop-color="#7d8c52"/>
+            </linearGradient>
+            {# Feuilles lancéolées (symétriques légèrement irrégulières) + nervure #}
+            <symbol id="bg-leaf-lance" viewBox="0 0 22 30" overflow="visible">
+                <path fill="url(#bg-leaf-grad)" d="M11 3.2c4.2 6 5.2 14.5 0 23.2C5.8 17.7 6.8 9.2 11 3.2z"/>
+                <path fill="none" stroke="rgb(26 34 18)" stroke-opacity="0.38" stroke-width="0.4" stroke-linecap="round" d="M11 9.5v10"/>
+            </symbol>
+            <symbol id="bg-leaf-small" viewBox="0 0 18 22" overflow="visible">
+                <path fill="url(#bg-leaf-grad-young)" d="M9 2.8c3.2 4 4 9.5 0 16.2C5 12.3 5.8 6.8 9 2.8z"/>
+                <path fill="none" stroke="rgb(26 34 18)" stroke-opacity="0.3" stroke-width="0.35" stroke-linecap="round" d="M9 7.5v6.5"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    {% set branches = [
+        { x: '2%', y: '4%', w: 'min(240px, 44vw)', rot: '-6', op: '0.88', d: '22s', delay: '0s', v: 1 },
+        { x: '80%', y: '5%', w: 'min(220px, 40vw)', rot: '16', op: '0.82', d: '19s', delay: '-3s', v: 2 },
+        { x: '6%', y: '36%', w: 'min(200px, 38vw)', rot: '10', op: '0.78', d: '24s', delay: '-5s', v: 3 },
+        { x: '70%', y: '30%', w: 'min(230px, 42vw)', rot: '-12', op: '0.85', d: '17s', delay: '-1.5s', v: 4 },
+        { x: '0%', y: '66%', w: 'min(260px, 48vw)', rot: '6', op: '0.8', d: '21s', delay: '-7s', v: 2 },
+        { x: '86%', y: '60%', w: 'min(210px, 39vw)', rot: '-18', op: '0.86', d: '20s', delay: '-4s', v: 1 },
+        { x: '42%', y: '1%', w: 'min(180px, 34vw)', rot: '2', op: '0.72', d: '23s', delay: '-2s', v: 4 },
+        { x: '46%', y: '84%', w: 'min(220px, 40vw)', rot: '-8', op: '0.8', d: '18s', delay: '-6s', v: 3 },
+        { x: '30%', y: '20%', w: 'min(160px, 30vw)', rot: '32', op: '0.68', d: '25s', delay: '-8s', v: 1 },
+        { x: '56%', y: '46%', w: 'min(190px, 36vw)', rot: '-28', op: '0.7', d: '26s', delay: '-2.5s', v: 2 },
+        { x: '16%', y: '12%', w: 'min(150px, 28vw)', rot: '38', op: '0.65', d: '27s', delay: '-9s', v: 4 },
+        { x: '66%', y: '16%', w: 'min(170px, 32vw)', rot: '-34', op: '0.67', d: '21s', delay: '-3.5s', v: 3 },
+        { x: '50%', y: '70%', w: 'min(200px, 37vw)', rot: '12', op: '0.75', d: '24s', delay: '-5.5s', v: 2 },
+        { x: '90%', y: '26%', w: 'min(170px, 31vw)', rot: '-22', op: '0.7', d: '22s', delay: '-1s', v: 1 },
+        { x: '88%', y: '48%', w: 'min(190px, 35vw)', rot: '-16', op: '0.73', d: '19s', delay: '-7.2s', v: 2 },
+        { x: '38%', y: '34%', w: 'min(165px, 31vw)', rot: '-42', op: '0.66', d: '28s', delay: '-1.2s', v: 4 },
+        { x: '60%', y: '58%', w: 'min(200px, 36vw)', rot: '35', op: '0.72', d: '21s', delay: '-8.5s', v: 3 },
+        { x: '4%', y: '44%', w: 'min(155px, 29vw)', rot: '48', op: '0.62', d: '27s', delay: '-3.8s', v: 2 },
+        { x: '93%', y: '74%', w: 'min(175px, 32vw)', rot: '-44', op: '0.7', d: '22s', delay: '-5.1s', v: 1 },
+        { x: '28%', y: '62%', w: 'min(180px, 33vw)', rot: '-20', op: '0.68', d: '25s', delay: '-9.2s', v: 4 },
+        { x: '34%', y: '78%', w: 'min(195px, 36vw)', rot: '15', op: '0.76', d: '18s', delay: '-2.1s', v: 2 },
+        { x: '64%', y: '76%', w: 'min(185px, 35vw)', rot: '-12', op: '0.74', d: '20s', delay: '-7.8s', v: 4 },
+        { x: '20%', y: '30%', w: 'min(145px, 27vw)', rot: '55', op: '0.58', d: '29s', delay: '-10s', v: 3 },
+        { x: '78%', y: '38%', w: 'min(170px, 32vw)', rot: '-48', op: '0.63', d: '27s', delay: '-3.3s', v: 1 },
+    ] %}
+
+    {% for b in branches %}
+        <div
+            class="leaf-float absolute"
+            style="left: {{ b.x }}; top: {{ b.y }}; opacity: {{ b.op }}; --leaf-dur: {{ b.d }}; animation-delay: {{ b.delay }};"
+        >
+            <div class="branch-sprite origin-center" style="width: {{ b.w }}; transform: rotate({{ b.rot }}deg);">
+                {% if b.v == 1 %}
+                    <svg class="h-auto w-full" viewBox="0 0 260 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 166c38-48 72-62 108-74 32-11 58-28 124-68" stroke="rgb(62 72 40)" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.92" fill="none"/>
+                        <path d="M96 114c22-14 44-22 66-26" stroke="rgb(72 82 48)" stroke-width="1.15" stroke-linecap="round" stroke-opacity="0.88" fill="none"/>
+                        <path d="M164 54c18-10 36-18 54-22" stroke="rgb(68 78 44)" stroke-width="0.95" stroke-linecap="round" stroke-opacity="0.82" fill="none"/>
+                        <use href="#bg-leaf-lance" width="26" height="36" transform="translate(36 128) rotate(-52)"/>
+                        <use href="#bg-leaf-small" width="18" height="22" transform="translate(58 108) rotate(-38)"/>
+                        <use href="#bg-leaf-lance" width="24" height="32" transform="translate(82 92) rotate(-44)"/>
+                        <use href="#bg-leaf-lance" width="28" height="38" transform="translate(108 74) rotate(-36)"/>
+                        <use href="#bg-leaf-small" width="16" height="20" transform="translate(132 58) rotate(-28)"/>
+                        <use href="#bg-leaf-lance" width="25" height="34" transform="translate(148 48) rotate(-22)"/>
+                        <use href="#bg-leaf-lance" width="22" height="30" transform="translate(178 34) rotate(-16)"/>
+                        <use href="#bg-leaf-small" width="17" height="21" transform="translate(198 22) rotate(-12)"/>
+                        <use href="#bg-leaf-lance" width="23" height="32" transform="translate(104 100) rotate(-58)"/>
+                        <use href="#bg-leaf-lance" width="21" height="29" transform="translate(188 40) rotate(-42)"/>
+                    </svg>
+                {% elseif b.v == 2 %}
+                    <svg class="h-auto w-full" viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M120 192c2-58-12-94-28-118-16-26-38-46-72-62" stroke="rgb(62 72 40)" stroke-width="1.55" stroke-linecap="round" stroke-opacity="0.9" fill="none"/>
+                        <path d="M120 192c6-52 34-92 62-118 26-24 52-38 74-46" stroke="rgb(62 72 40)" stroke-width="1.45" stroke-linecap="round" stroke-opacity="0.88" fill="none"/>
+                        <path d="M94 78c24-12 46-20 64-24" stroke="rgb(72 82 48)" stroke-width="0.95" stroke-linecap="round" stroke-opacity="0.85" fill="none"/>
+                        <use href="#bg-leaf-lance" width="25" height="34" transform="translate(52 24) rotate(-22)"/>
+                        <use href="#bg-leaf-lance" width="24" height="32" transform="translate(78 48) rotate(-40)"/>
+                        <use href="#bg-leaf-small" width="17" height="21" transform="translate(102 38) rotate(32)"/>
+                        <use href="#bg-leaf-lance" width="27" height="38" transform="translate(168 52) rotate(-14)"/>
+                        <use href="#bg-leaf-lance" width="22" height="30" transform="translate(198 18) rotate(-8)"/>
+                        <use href="#bg-leaf-small" width="16" height="20" transform="translate(88 72) rotate(48)"/>
+                        <use href="#bg-leaf-lance" width="23" height="33" transform="translate(138 64) rotate(24)"/>
+                        <use href="#bg-leaf-lance" width="21" height="29" transform="translate(112 108) rotate(-12)"/>
+                        <use href="#bg-leaf-small" width="18" height="22" transform="translate(120 138) rotate(6)"/>
+                    </svg>
+                {% elseif b.v == 3 %}
+                    <svg class="h-auto w-full" viewBox="0 0 220 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M110 6c-8 52 4 104 12 138 6 26 12 44 18 58" stroke="rgb(62 72 40)" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.9" fill="none"/>
+                        <path d="M116 148c-22-16-46-24-64-28" stroke="rgb(72 82 48)" stroke-width="1.05" stroke-linecap="round" stroke-opacity="0.86" fill="none"/>
+                        <path d="M118 96c28-10 52-16 68-18" stroke="rgb(70 80 46)" stroke-width="0.95" stroke-linecap="round" stroke-opacity="0.84" fill="none"/>
+                        <use href="#bg-leaf-lance" width="25" height="34" transform="translate(98 36) rotate(10)"/>
+                        <use href="#bg-leaf-lance" width="24" height="32" transform="translate(112 78) rotate(18)"/>
+                        <use href="#bg-leaf-small" width="17" height="21" transform="translate(104 118) rotate(-32)"/>
+                        <use href="#bg-leaf-lance" width="22" height="30" transform="translate(64 116) rotate(26)"/>
+                        <use href="#bg-leaf-lance" width="26" height="36" transform="translate(148 88) rotate(-18)"/>
+                        <use href="#bg-leaf-lance" width="21" height="29" transform="translate(118 162) rotate(4)"/>
+                        <use href="#bg-leaf-small" width="16" height="20" transform="translate(124 188) rotate(14)"/>
+                    </svg>
+                {% else %}
+                    <svg class="h-auto w-full" viewBox="0 0 200 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 162c-26-36-38-68-42-92-4-28 2-50 14-64" stroke="rgb(62 72 40)" stroke-width="1.35" stroke-linecap="round" stroke-opacity="0.88" fill="none"/>
+                        <path d="M100 162c8-46 24-78 44-102 18-22 36-34 48-38" stroke="rgb(64 74 42)" stroke-width="1.25" stroke-linecap="round" stroke-opacity="0.86" fill="none"/>
+                        <path d="M86 96c12-8 24-12 36-14" stroke="rgb(74 84 50)" stroke-width="0.85" stroke-linecap="round" stroke-opacity="0.82" fill="none"/>
+                        <use href="#bg-leaf-lance" width="24" height="32" transform="translate(64 44) rotate(-16)"/>
+                        <use href="#bg-leaf-lance" width="23" height="31" transform="translate(92 32) rotate(10)"/>
+                        <use href="#bg-leaf-small" width="17" height="21" transform="translate(132 42) rotate(-24)"/>
+                        <use href="#bg-leaf-lance" width="22" height="30" transform="translate(152 26) rotate(-6)"/>
+                        <use href="#bg-leaf-lance" width="21" height="28" transform="translate(78 84) rotate(44)"/>
+                        <use href="#bg-leaf-lance" width="22" height="30" transform="translate(108 68) rotate(-38)"/>
+                        <use href="#bg-leaf-small" width="16" height="20" transform="translate(98 124) rotate(4)"/>
+                    </svg>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

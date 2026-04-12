@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% set lat = 47.58494586123128 %}
+{% set lng = -3.077825469116688 %}
+{% set link_google = 'https://www.google.com/maps/dir/?api=1&destination=' ~ lat ~ ',' ~ lng %}
+{% set link_apple = 'https://maps.apple.com/?daddr=' ~ lat ~ ',' ~ lng %}
+{% set link_waze = 'https://waze.com/ul?ll=' ~ lat ~ ',' ~ lng ~ '&navigate=yes' %}
+
+{% block title %}Clémence &amp; Valentine{% endblock %}
+{% block meta_description %}Informations pratiques sur le mariage de Clémence et Valentine : date, lieu, horaires.{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+    <style>
+        .informations-map .leaflet-container {
+            font-family: inherit;
+            background: rgb(26 34 18);
+        }
+        .informations-map .leaflet-control-zoom a {
+            background: rgb(40 54 24 / 0.95);
+            color: rgb(254 250 224 / 0.95);
+            border-color: rgb(96 108 56 / 0.6);
+        }
+        .informations-map .leaflet-control-zoom a:hover {
+            background: rgb(96 108 56 / 0.85);
+            color: rgb(254 250 224);
+        }
+        .informations-map .leaflet-control-attribution {
+            background: rgb(26 34 18 / 0.85);
+            color: rgb(254 250 224 / 0.65);
+            font-size: 0.65rem;
+        }
+        .informations-map .leaflet-control-attribution a {
+            color: rgb(201 139 6 / 0.95);
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var el = document.getElementById('wedding-map');
+            if (!el || typeof L === 'undefined') {
+                return;
+            }
+            var lat = {{ lat|json_encode|raw }};
+            var lng = {{ lng|json_encode|raw }};
+            var map = L.map(el, {
+                scrollWheelZoom: true,
+                attributionControl: true,
+            }).setView([lat, lng], 15);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                subdomains: 'abcd',
+                maxZoom: 20,
+            }).addTo(map);
+            /* Simple gold leaf: single symmetric shape + midrib */
+            var leafSvg =
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 48" width="40" height="48">' +
+                '<path fill="#c98b06" stroke="#8a6210" stroke-width="1" stroke-linejoin="round" d="M20 4 C10 14 6 24 8 32 C10 38 16 42 20 44 C24 42 30 38 32 32 C34 24 30 14 20 4Z"/>' +
+                '<path fill="none" stroke="#fefae0" stroke-opacity="0.35" stroke-width="0.75" stroke-linecap="round" d="M20 10 L20 40"/>' +
+                '</svg>';
+            var leafIcon = L.icon({
+                iconUrl: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(leafSvg),
+                iconSize: [40, 48],
+                iconAnchor: [20, 48],
+                popupAnchor: [0, -44],
+            });
+            L.marker([lat, lng], { icon: leafIcon }).addTo(map).bindPopup('Lieu du mariage');
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <article aria-labelledby="page-title">
+        <h1 id="page-title" class="mb-3 text-center text-4xl md:text-[2.75rem]">Informations pratiques</h1>
+        <p class="mb-10 text-center text-sm font-light text-cream/65">Tout sera précisé en temps voulu — voici ce que nous pouvons déjà partager.</p>
+
+        <div class="rounded-2xl border border-olive/35 bg-forest/55 p-7 shadow-soft backdrop-blur-sm md:p-9 mb-10">
+            <ul class="m-0 list-none space-y-0 divide-y divide-dashed divide-cream/15 p-0">
+                <li class="flex flex-col gap-1 py-4 first:pt-0 sm:flex-row sm:items-start sm:gap-4">
+                    <span class="shrink-0 pt-0.5 font-display text-lg text-gold/90 sm:w-[10rem]">Date</span>
+                    <span class="text-cream/85"><em class="italic text-gold">À confirmer</em> — le jour J sera communiqué prochainement.</span>
+                </li>
+                <li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-start sm:gap-4">
+                    <span class="shrink-0 pt-0.5 font-display text-lg text-gold/90 sm:w-[10rem]">Lieu</span>
+                    <span class="text-cream/85"><em class="italic text-gold">À venir</em> - ville et lieu de cérémonie / réception.</span>
+                </li>
+                <li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-start sm:gap-4">
+                    <span class="shrink-0 pt-0.5 font-display text-lg text-gold/90 sm:w-[10rem]">Horaires</span>
+                    <span class="text-cream/85"><em class="italic text-gold">Placeholder</em> — programme détaillé à suivre.</span>
+                </li>
+            </ul>
+        </div>
+
+        <section class="informations-map mb-10" aria-labelledby="map-heading">
+            <div id="wedding-map" class="h-[min(52vh,22rem)] w-full overflow-hidden rounded-2xl border border-olive/40 shadow-soft md:h-[min(48vh,26rem)]" role="region" aria-label="Carte du lieu du mariage"></div>
+
+            <div class="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
+                <a href="{{ link_google }}" rel="noopener noreferrer" target="_blank" class="contact-action inline-flex items-center justify-center gap-2 rounded-xl border border-cream/15 bg-forest/60 px-5 py-3 text-center text-sm font-semibold text-cream no-underline transition hover:border-gold/50 hover:bg-olive/35">
+                    <svg class="h-5 w-5 shrink-0 text-gold" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Itinéraire - Google&nbsp;Maps
+                </a>
+                <a href="{{ link_apple }}" rel="noopener noreferrer" target="_blank" class="contact-action inline-flex items-center justify-center gap-2 rounded-xl border border-cream/15 bg-forest/60 px-5 py-3 text-center text-sm font-semibold text-cream no-underline transition hover:border-gold/50 hover:bg-olive/35">
+                    {# Apple mark (bitten apple) — monochrome for UI #}
+                    <svg class="h-5 w-5 shrink-0 text-gold" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                    Intinéraire - Apple&nbsp;Maps
+                </a>
+                <a href="{{ link_waze }}" rel="noopener noreferrer" target="_blank" class="contact-action inline-flex items-center justify-center gap-2 rounded-xl border border-cream/15 bg-forest/60 px-5 py-3 text-center text-sm font-semibold text-cream no-underline transition hover:border-gold/50 hover:bg-olive/35">
+                    {# Waze-style blob + face (gold like other map icons; dark details for contrast) #}
+                    <svg class="h-5 w-5 shrink-0 text-gold" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path fill="currentColor" d="M20.5 10.2c-.3-3.2-2.9-5.7-6.1-5.7-1.4 0-2.7.5-3.7 1.3-.6-.8-1.6-1.3-2.7-1.3-1.8 0-3.3 1.5-3.3 3.3 0 .4.1.8.2 1.2-2 .9-3.4 2.9-3.4 5.2 0 3.2 2.6 5.8 5.8 5.8h8.5c2.9 0 5.3-2.4 5.3-5.3 0-2.1-1.2-3.9-3-4.5z"/><circle cx="9.2" cy="12.5" r="1.1" fill="#283618"/><circle cx="14.8" cy="12.5" r="1.1" fill="#283618"/><path stroke="#283618" stroke-width="1.2" stroke-linecap="round" d="M10.5 15.5c1.2.8 2.8.8 4 0"/></svg>
+                    Itinéraire - Waze
+                </a>
+            </div>
+        </section>
+    </article>
+{% endblock %}
