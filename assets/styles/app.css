@@ -108,6 +108,26 @@
     }
 }
 
+/* Home countdown: explicit grid (Tailwind utilities can be absent from build output) */
+.wedding-countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .wedding-countdown-grid {
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .wedding-countdown-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+}
+
 /* Floating organic branches (see _partials/leaves_background.html.twig) */
 .branch-sprite {
     filter: drop-shadow(0 2px 8px rgb(0 0 0 / 0.32));

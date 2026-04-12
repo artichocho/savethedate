@@ -14,6 +14,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Allura&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
         {% block stylesheets %}
+            {# Chargement explicite : le CSS ne doit pas dépendre uniquement de l’import dans app.js (Git Pages, modules bloqués, etc.) #}
+            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
         {% endblock %}
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}

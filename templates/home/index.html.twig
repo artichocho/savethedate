@@ -1,5 +1,24 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Mise en page du compte à rebours : garantie même si une autre feuille écrase .wedding-countdown-grid */
+        #wedding-countdown > .wedding-countdown-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 0.75rem !important;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            #wedding-countdown > .wedding-countdown-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+                gap: 1.25rem !important;
+            }
+        }
+    </style>
+{% endblock %}
+
 {% block title %}Clémence &amp; Valentine{% endblock %}
 {% block meta_description %}Save the date - Clémence et Valentine se marient. Réservez la date de notre mariage.{% endblock %}
 
@@ -9,9 +28,10 @@
             <div class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-olive/30 blur-3xl"></div>
             <div class="pointer-events-none absolute -bottom-12 -left-10 h-40 w-40 rounded-full bg-forest/50 blur-3xl"></div>
             <div class="relative text-center">
-                <h1 id="page-title" class="mb-6 text-4xl md:text-5xl">Save the date</h1>
+                <h1 id="page-title" class="mb-6 text-4xl md:text-5xl">Save the Date</h1>
+
                 <p class="mx-auto mt-5 max-w-xl text-[0.95rem] font-light leading-relaxed text-cream/75">
-                    Nous nous marions - les détails suivront bientôt. Merci de réserver cette journée ; une invitation complète vous parviendra ultérieurement.
+                    Nous nous marions - les détails suivront bientôt. Merci de réserver cette journée, une invitation complète vous parviendra ultérieurement.
                 </p>
 
                 <div class="my-10 flex items-center justify-center gap-4 text-gold/90">
@@ -23,8 +43,89 @@
                     <span class="h-px max-w-[6rem] flex-1 bg-gradient-to-l from-transparent via-cream/25 to-transparent"></span>
                 </div>
 
-                <p class="text-sm font-light italic text-cream/70">Réservez la date -
+                <p class="text-sm font-light italic text-cream/70 mb-6">Réservez la date -
                  le lieu et l’heure précise suivront.</p>
+
+                 {% if countdown.ended %}
+                    <div class="mx-auto mt-6 max-w-xl px-2">
+                        <p class="text-center text-sm font-light text-cream/85">Nous y sommes - merci d’être avec nous ce jour-là.</p>
+                    </div>
+                {% else %}
+                    <div
+                        id="wedding-countdown"
+                        class="mx-auto mt-6 w-full max-w-4xl px-2 sm:px-4"
+                        role="timer"
+                        aria-label="Temps restant avant le 9 septembre 2028"
+                        data-end="{{ countdown.endIso|e('html_attr') }}"
+                    >
+                        <div class="wedding-countdown-grid">
+                            <div class="w-full min-w-0 rounded-2xl border border-cream/15 bg-forest/40 px-3 py-3.5 text-center shadow-inner backdrop-blur-sm sm:px-5 sm:py-4">
+                                <span class="font-display text-2xl tabular-nums text-gold/90 sm:text-[1.65rem]" data-unit="days">{{ countdown.days }}</span>
+                                <span class="mt-2.5 block text-[0.65rem] font-light uppercase tracking-wider text-cream/90">jours</span>
+                            </div>
+                            <div class="w-full min-w-0 rounded-2xl border border-cream/15 bg-forest/40 px-3 py-3.5 text-center shadow-inner backdrop-blur-sm sm:px-5 sm:py-4">
+                                <span class="font-display text-2xl tabular-nums text-gold/90 sm:text-[1.65rem]" data-unit="hours">{{ countdown.hours }}</span>
+                                <span class="mt-2.5 block text-[0.65rem] font-light uppercase tracking-wider text-cream/90">heures</span>
+                            </div>
+                            <div class="w-full min-w-0 rounded-2xl border border-cream/15 bg-forest/40 px-3 py-3.5 text-center shadow-inner backdrop-blur-sm sm:px-5 sm:py-4">
+                                <span class="font-display text-2xl tabular-nums text-gold/90 sm:text-[1.65rem]" data-unit="minutes">{{ countdown.minutes }}</span>
+                                <span class="mt-2.5 block text-[0.65rem] font-light uppercase tracking-wider text-cream/90">minutes</span>
+                            </div>
+                            <div class="w-full min-w-0 rounded-2xl border border-cream/15 bg-forest/40 px-3 py-3.5 text-center shadow-inner backdrop-blur-sm sm:px-5 sm:py-4">
+                                <span class="font-display text-2xl tabular-nums text-gold/90 sm:text-[1.65rem]" data-unit="seconds">{{ countdown.seconds }}</span>
+                                <span class="mt-2.5 block text-[0.65rem] font-light uppercase tracking-wider text-cream/90">secondes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        (function () {
+                            var root = document.getElementById('wedding-countdown');
+                            if (!root) {
+                                return;
+                            }
+                            var end = Date.parse(root.getAttribute('data-end') || '');
+                            if (Number.isNaN(end)) {
+                                return;
+                            }
+                            var daysEl = root.querySelector('[data-unit="days"]');
+                            var hoursEl = root.querySelector('[data-unit="hours"]');
+                            var minutesEl = root.querySelector('[data-unit="minutes"]');
+                            var secondsEl = root.querySelector('[data-unit="seconds"]');
+                            var timerId;
+                            function tick() {
+                                var diff = end - Date.now();
+                                if (diff <= 0) {
+                                    if (timerId) {
+                                        clearInterval(timerId);
+                                    }
+                                    root.innerHTML =
+                                        "<p class=\"text-center text-sm font-light text-cream/85\">Nous y sommes — merci d'être avec nous ce jour-là.</p>";
+                                    root.removeAttribute('role');
+                                    return;
+                                }
+                                var totalSeconds = Math.floor(diff / 1000);
+                                var days = Math.floor(totalSeconds / 86400);
+                                var hours = Math.floor((totalSeconds % 86400) / 3600);
+                                var minutes = Math.floor((totalSeconds % 3600) / 60);
+                                var seconds = totalSeconds % 60;
+                                if (daysEl) {
+                                    daysEl.textContent = String(days);
+                                }
+                                if (hoursEl) {
+                                    hoursEl.textContent = hours < 10 ? '0' + hours : String(hours);
+                                }
+                                if (minutesEl) {
+                                    minutesEl.textContent = minutes < 10 ? '0' + minutes : String(minutes);
+                                }
+                                if (secondsEl) {
+                                    secondsEl.textContent = seconds < 10 ? '0' + seconds : String(seconds);
+                                }
+                            }
+                            tick();
+                            timerId = setInterval(tick, 1000);
+                        })();
+                    </script>
+                {% endif %}
             </div>
         </div>
     </article>
