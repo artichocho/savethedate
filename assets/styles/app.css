@@ -96,6 +96,23 @@
     }
 }
 
+/* Prénom en Allura (« Autour de Clémence », etc.) */
+.presentation-section-heading-name {
+    font-family: var(--font-family-display), cursive;
+    font-weight: 400;
+    font-size: 1.58em;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: rgb(254 250 224 / 0.95);
+}
+
+@media (min-width: 1024px) {
+    .presentation-section-heading-name {
+        font-size: 1.72em;
+        letter-spacing: 0.05em;
+    }
+}
+
 /* Scroll-triggered reveal (see assets/app.js) */
 .scroll-reveal {
     opacity: 0;
