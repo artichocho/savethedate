@@ -6,18 +6,252 @@
 {% block body %}
     <article aria-labelledby="page-title">
         <h1 id="page-title" class="mb-3 text-center text-4xl md:text-[2.75rem]">Liste de Mariage</h1>
-        <p class="mx-auto mb-10 max-w-xl text-center text-sm font-light leading-relaxed text-cream/70">
-            Votre présence est le plus beau des cadeaux. Si vous souhaitez toutefois nous gâter, une liste sera bientôt disponible ici.
-        </p>
+        <div class="mx-auto mb-10 max-w-xl text-center text-sm font-light leading-relaxed text-cream/70">
+            <p class="mb-2">Votre présence est le plus beau des cadeaux.</p>
+            <p class="mb-2">Si vous souhaitez toutefois nous gâter, nous avons choisi de vous inviter à faire partie de notre voyage de noces au Vietnam, plutôt qu’une liste d’objets. Chaque contribution nous rapproche d’un souvenir, d’un instant, d’une aventure.</p>
+            <p>
+                <span class="inline-flex items-center gap-x-1.5">
+                    <span>Merci de faire un bout de chemin avec nous</span>
+                    <svg class="size-[1em] shrink-0 text-wine" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="amour" focusable="false">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </span>                
+            </p>
+        </div>
 
         <div class="rounded-2xl border border-olive/35 bg-forest/55 p-8 shadow-soft backdrop-blur-sm md:p-10">
-            <h2 class="mb-4 text-center text-2xl md:text-3xl">Lien à venir</h2>
-            <p class="mb-6 text-center text-cream/75">
-                Nous ajouterons prochainement un lien vers notre liste (magasin en ligne, cagnotte, ou autre) - merci de votre patience.
+            <h2 class="nav-like-heading nav-like-heading--lg mb-4 text-center">Notre voyage commence...</h2>
+            <div class="mb-6 text-center text-cream/75">
+                <p>Après notre union, nous prendrons la route vers les terres lointaines du Vietnam.</p>
+                <p>Nous vous partageons ici une liste de contributions suggérées, <i>non exhaustive</i> et pensée pour tous les budgets, afin que chacun puisse participer librement selon ses envies.</p>
+                <p>Pour celles et ceux qui le préfèrent, une urne physique sera également présente le jour J.</p>
+            </div>
+
+            <p class="mb-8 text-center text-xs uppercase tracking-[0.2em] text-cream/55">
+                Placeholder technique : ces cartes seront connectees a Supabase + Stripe Checkout
             </p>
-            <p class="text-center text-sm italic text-cream/55">
-                Placeholder : URL ou nom du magasin à insérer ici.
-            </p>
+
+            <section class="mb-10" aria-labelledby="contrib-libre-heading">
+                <h3 id="contrib-libre-heading" class="nav-like-heading nav-like-heading--xl mb-4 text-center">Participation libre</h3>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <article class="rounded-2xl border border-gold/45 bg-green-deep/45 p-4 shadow-inner sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-md">
+                        <div class="mb-3 flex aspect-[16/9] items-center justify-center rounded-xl border border-dashed border-cream/25 bg-forest/50 text-center text-xs uppercase tracking-[0.18em] text-cream/55">
+                            Placeholder photo
+                        </div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-gold/95">🧧 Offrande aux esprits du voyage</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Contribution libre pour soutenir les étapes du voyage selon vos envies.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70">
+                            <span>Montant libre</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mb-10" aria-labelledby="petits-plaisirs-heading">
+                <h3 id="petits-plaisirs-heading" class="nav-like-heading nav-like-heading--xl mb-4 text-center">Petits plaisirs</h3>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">☕ Élixir des anciens</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Partager un café vietnamien, lent et précieux.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70">
+                            <span>18€</span>
+                            <span class="rounded-full border border-gold/50 px-2 py-1 text-gold/90">Déjà offert</span>
+                        </div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🥭 Fruits exotiques du marché</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Naviguer à travers les couleurs et les saveurs.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70">
+                            <span>16€</span>
+                            <span class="rounded-full border border-gold/50 px-2 py-1 text-gold/90">Déjà offert</span>
+                        </div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🥖 Bánh mì partagé sur un trottoir</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Avec une bière locale au coucher du soleil.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70">
+                            <span>24€</span>
+                            <span class="rounded-full border border-gold/50 px-2 py-1 text-gold/90">Déjà offert</span>
+                        </div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🏮 Création de lanternes enchantées</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Un atelier artisanal pour ramener un peu de magie.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>36€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🌊 Journée plage paradisiaque</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Une pause de repos entre deux aventures.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>52€</span></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mb-10" aria-labelledby="experiences-heading">
+                <h3 id="experiences-heading" class="nav-like-heading nav-like-heading--xl mb-4 text-center">Expériences</h3>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🍳 Cours de cuisine vietnamienne</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Apprendre les gestes et saveurs d'une cuisine locale.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>59€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🍜 Banquet des mille saveurs</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Explorer les ruelles parfumées et goûter aux secrets du Vietnam.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>64€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🧘 Moment de sérénité (massage/spa)</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Un temps de détente bien mérité pendant le voyage.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>54€</span></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mb-10" aria-labelledby="aventures-heading">
+                <h3 id="aventures-heading" class="nav-like-heading nav-like-heading--xl mb-4 text-center">Aventure &amp; Découvertes</h3>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🚲 Aventure à vélo hors des sentiers</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Une escapade douce à travers villages et paysages.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>28€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🛶 Kayak entre les dragons d'Halong</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Pagayer au milieu des pains de sucre mythiques.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>44€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🌾 Journée dans les rizières</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Une immersion dans les paysages les plus emblématiques.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>52€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🌿 Trek dans la jungle</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Explorer une nature luxuriante accompagnées d'un guide local.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>64€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">⛰️ Exploration des grottes mystérieuses</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Un décor minéral spectaculaire à découvrir pas à pas.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>72€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🛵 Traversée des montagnes (Ha Giang Loop)</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Une aventure spectaculaire entre cols et villages reculés.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>135€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🚤 Traversée des eaux sacrées</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Naviguer entre les montagnes endormies.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>175€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🚆 Voyage à travers les paysages</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Pour découvrir le Vietnam par le train, entre la mer et les montagnes.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>290€</span></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mb-10" aria-labelledby="moments-deux-heading">
+                <h3 id="moments-deux-heading" class="nav-like-heading nav-like-heading--xl mb-4 text-center">Moments à deux</h3>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🌅 Coucher de soleil magique</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Un instant suspendu pour célébrer la beauté du voyage.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>22€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🚤 Balade en bateau au crepuscule</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Une lumière dorée pour clôturer la journée.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>48€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🍽️ Dîner romantique aux lanternes</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Un dîner à deux dans une ambiance intime et poétique.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>78€</span></div>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[4/3] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🌙 Nuit sous les étoiles</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Dormir au cœur des légendes.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>240€</span></div>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="grands-postes-heading">
+                <h3 id="grands-postes-heading" class="nav-like-heading nav-like-heading--xl mb-4 text-center">Quêtes Principales</h3>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[16/9] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🎒 Sac d'aventure</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Pour nous aider à composer notre compagnon de route, chargé de souvenirs à venir.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>480€</span></div>
+                        <p class="mt-3 text-sm text-gold/90">Progression : 40 / 480€</p>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[16/9] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">⛵ Grande croisière en baie d'Halong</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Une croisière au fil des eaux émeraude, suivie d'une nuit au cœur des géants de pierre.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>960€</span></div>
+                        <p class="mt-3 text-sm text-gold/90">Progression : 120 / 960€</p>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[16/9] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">🏨 Hébergements du voyage</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Pour nos nuits sous les étoiles, refuges et maisons d'hôtes.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>1 440€</span></div>
+                        <p class="mt-3 text-sm text-gold/90">Progression : 0 / 1 440</p>
+                    </article>
+
+                    <article class="rounded-2xl border border-olive/35 bg-green-deep/40 p-4 shadow-inner">
+                        <div class="mb-3 flex aspect-[16/9] items-center justify-center rounded-xl border border-dashed border-cream/20 bg-forest/45 text-xs uppercase tracking-[0.18em] text-cream/55">Placeholder photo</div>
+                        <h4 class="nav-like-heading nav-like-heading--card m-0 text-cream/95">✈️ Traversée vers les terres lointaines</h4>
+                        <p class="mb-3 mt-2 text-sm text-cream/75">Pour nous faire décoller vers l'aventure.</p>
+                        <div class="flex items-center justify-between text-xs uppercase tracking-[0.12em] text-cream/70"><span>1 720</span></div>
+                        <p class="mt-3 text-sm text-gold/90">Progression : 620 / 1 720</p>
+                    </article>
+                </div>
+            </section>
         </div>
     </article>
 {% endblock %}
