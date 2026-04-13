@@ -48,7 +48,7 @@
     h1,
     h3:not(.presentation-section-heading),
     h4,
-    h2:not(.informations-faq-heading):not(.presentation-section-heading) {
+    h2:not(.informations-faq-heading):not(.presentation-section-heading):not(.contact-nav-heading) {
         font-family: var(--font-family-display), cursive;
         font-weight: 400;
         letter-spacing: 0.03em;
@@ -65,6 +65,25 @@
 
     main a.contact-action:hover {
         @apply text-cream;
+    }
+}
+
+
+/* Titres de contact — même style que la navbar */
+.contact-nav-heading {
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(254 250 224 / 0.92);
+}
+
+@media (min-width: 1024px) {
+    .contact-nav-heading {
+        font-size: 1.02rem;
+        letter-spacing: 0.28em;
     }
 }
 
