@@ -24,7 +24,6 @@
                 {% endif %}
             </div>
             <div class="flex flex-1 flex-col gap-2 p-5 pt-4">
-                {# Hauteur mini. fixe pour que « Témoin » (1 ligne) et libellés longs (2–3 lignes) alignent les prénoms #}
                 <p class="m-0 flex min-h-[3rem] items-start text-[0.65rem] font-semibold uppercase leading-snug tracking-[0.22em] {% if person.is_temoin %}text-gold/90{% else %}text-cream/50{% endif %}">{{ person.role }}</p>
                 <p class="m-0 font-display text-xl text-cream">{{ person.name }}</p>
                 <p class="m-0 flex-1 text-sm leading-relaxed text-cream/75">{{ person.phrase }}</p>

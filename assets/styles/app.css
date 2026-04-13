@@ -31,7 +31,6 @@
 @layer base {
     html {
         scroll-padding-top: 5.5rem;
-        overflow-x: clip;
     }
 
     body {
@@ -137,73 +136,48 @@
     }
 }
 
-/* Présentations — bandeau photo : pleine largeur viewport, sans cadre, fusion avec le fond */
-.presentation-couple-breakout {
-    position: relative;
-    width: 100vw;
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-}
-
-.presentation-couple-shot {
-    position: relative;
+/* Présentations — photo « Notre histoire » : bords adoucis, fondu dans le fond */
+.presentation-story-photo__inner {
     isolation: isolate;
-    overflow: hidden;
-    background-color: var(--color-green-deep);
-    border-radius: 0;
-    box-shadow: none;
+    box-shadow: 0 16px 48px rgb(0 0 0 / 0.2);
 }
 
-.presentation-couple-shot__img {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    max-height: none;
-    object-fit: cover;
-    object-position: center 40%;
-    transform: scale(1.07);
-    transform-origin: center center;
-    filter: sepia(0.14) saturate(0.86) brightness(0.94) contrast(1.05);
-}
-
-/* Fonds haut / bas : même teinte que la page pour fondre le cadrage */
-.presentation-couple-shot::before {
+.presentation-story-photo__inner::after {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 2;
+    z-index: 1;
     pointer-events: none;
+    border-radius: inherit;
     background:
-        linear-gradient(to bottom, rgb(26 34 18 / 0.97) 0%, rgb(26 34 18 / 0.35) 22%, transparent 40%),
-        linear-gradient(to top, rgb(26 34 18 / 0.97) 0%, rgb(26 34 18 / 0.35) 22%, transparent 40%);
+        linear-gradient(to bottom, rgb(26 34 18 / 0.72) 0%, rgb(26 34 18 / 0.18) 18%, transparent 38%, transparent 62%, rgb(26 34 18 / 0.18) 82%, rgb(26 34 18 / 0.72) 100%),
+        linear-gradient(to right, rgb(26 34 18 / 0.55) 0%, transparent 14%, transparent 86%, rgb(26 34 18 / 0.55) 100%),
+        radial-gradient(ellipse 92% 88% at 50% 50%, transparent 42%, rgb(40 54 24 / 0.22) 100%);
+    box-shadow: inset 0 0 72px 48px rgb(26 34 18 / 0.18);
 }
 
-/* Teinte charte (olive / or léger) sur le centre */
-.presentation-couple-shot::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none;
-    background:
-        radial-gradient(ellipse 130% 85% at 50% 45%, transparent 38%, rgb(40 54 24 / 0.35) 100%),
-        linear-gradient(
-            118deg,
-            rgb(96 108 56 / 0.12) 0%,
-            transparent 42%,
-            rgb(201 139 6 / 0.06) 100%
-        );
-    opacity: 0.95;
+/* Léger fondu de l’image sur les bords + teinte légère */
+.presentation-story-photo__img {
+    filter: saturate(0.92) brightness(0.98);
+    -webkit-mask-image: radial-gradient(
+        ellipse 98% 96% at 50% 50%,
+        #000 0%,
+        #000 58%,
+        rgb(0 0 0 / 0.45) 78%,
+        transparent 100%
+    );
+    mask-image: radial-gradient(
+        ellipse 98% 96% at 50% 50%,
+        #000 0%,
+        #000 58%,
+        rgb(0 0 0 / 0.45) 78%,
+        transparent 100%
+    );
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .presentation-couple-shot__img {
-        transform: scale(1.03);
+    .presentation-story-photo__img {
+        filter: saturate(0.94) brightness(0.99);
     }
 }
 
