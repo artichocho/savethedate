@@ -8,6 +8,8 @@ parameters:
     env(GITHUB_PAGES_BASE_PATH): ''
     app.github_pages_base_path: '%env(string:GITHUB_PAGES_BASE_PATH)%'
     app.asset_mapper_public_prefix: '%app.github_pages_base_path%/assets/'
+    app.wedding_date_iso: '2028-09-23'
+    app.wedding_date_label: '23 septembre 2028'
 
 services:
     # default configuration for services in *this* file

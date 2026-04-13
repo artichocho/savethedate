@@ -15,7 +15,8 @@ final class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function home(): Response
     {
-        $wedding = (new DateTimeImmutable('2028-09-09', new DateTimeZone('Europe/Paris')))->setTime(0, 0, 0);
+        $weddingDateIso = (string) $this->getParameter('app.wedding_date_iso');
+        $wedding = (new DateTimeImmutable($weddingDateIso, new DateTimeZone('Europe/Paris')))->setTime(0, 0, 0);
         $now = new DateTimeImmutable('now', new DateTimeZone('Europe/Paris'));
         $diffSeconds = $wedding->getTimestamp() - $now->getTimestamp();
         $ended = $diffSeconds <= 0;

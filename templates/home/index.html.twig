@@ -28,7 +28,23 @@
             <div class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-olive/30 blur-3xl"></div>
             <div class="pointer-events-none absolute -bottom-12 -left-10 h-40 w-40 rounded-full bg-forest/50 blur-3xl"></div>
             <div class="relative text-center">
-                <h1 id="page-title" class="mb-6 text-4xl md:text-5xl">Save the Date</h1>
+                <figure class="presentation-story-photo mx-auto mb-8 w-full max-w-3xl">
+                    <div class="presentation-story-photo__inner relative aspect-video w-full overflow-hidden rounded-3xl bg-green-deep/50">
+                        <img
+                            src="{{ asset('images/presentation.jpg') }}"
+                            alt="Clémence et Valentine"
+                            class="presentation-story-photo__img absolute inset-0 h-full w-full object-cover object-center"
+                            width="1600"
+                            height="900"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                        <div class="pointer-events-none absolute inset-x-0 bottom-0 z-[2] bg-gradient-to-t from-green-deep/90 via-green-deep/45 to-transparent px-4 pb-4 pt-10 sm:px-6 sm:pb-5 md:pb-6">
+                            <h1 id="page-title" class="m-0 text-center text-5xl md:text-6xl">Save the Date</h1>
+                            <p class="mt-1 text-center text-xs font-semibold uppercase tracking-[0.22em] text-cream/85 md:text-sm md:tracking-[0.26em]">{{ wedding_date_label }}</p>
+                        </div>
+                    </div>
+                </figure>
 
                 <p class="mx-auto mt-5 max-w-xl text-[0.95rem] font-light leading-relaxed text-cream/75">
                     Nous nous marions - les détails suivront bientôt. Merci de réserver cette journée, une invitation complète vous parviendra ultérieurement.
@@ -55,7 +71,7 @@
                         id="wedding-countdown"
                         class="mx-auto mt-6 w-full max-w-4xl px-2 sm:px-4"
                         role="timer"
-                        aria-label="Temps restant avant le 9 septembre 2028"
+                        aria-label="Temps restant avant le {{ wedding_date_label }}"
                         data-end="{{ countdown.endIso|e('html_attr') }}"
                     >
                         <div class="wedding-countdown-grid">
@@ -129,30 +145,4 @@
             </div>
         </div>
     </article>
-
-    <section id="photos" class="relative mt-16 scroll-mt-28 md:mt-24" aria-labelledby="photos-heading">
-        <h2 id="photos-heading" class="scroll-reveal mb-8 text-center text-3xl md:text-[2.25rem]">Quelques souvenirs</h2>
-        <p class="scroll-reveal mx-auto mb-10 max-w-lg text-center text-sm font-light text-cream/60">
-            Nos photos apparaîtront ici - glissez la page pour les découvrir petit à petit.
-        </p>
-
-        <div class="photo-grid mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {% for i in 1..4 %}
-                <figure class="scroll-reveal group relative aspect-[4/3] overflow-hidden rounded-2xl border border-olive/35 bg-gradient-to-br from-forest/70 via-green-deep/60 to-forest/80 shadow-soft">
-                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgb(96_108_56/0.25),transparent_55%)]"></div>
-                    <div class="relative flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-center">
-                        <div class="rounded-full border border-dashed border-cream/25 bg-forest/40 p-4 text-cream/35 transition duration-500 group-hover:border-gold/30 group-hover:text-gold/50">
-                            <svg class="h-12 w-12" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <rect x="6" y="10" width="36" height="28" rx="2" stroke="currentColor" stroke-width="1.2"/>
-                                <circle cx="18" cy="22" r="3.5" stroke="currentColor" stroke-width="1"/>
-                                <path d="M8 36l10-10 8 8 10-12 14 14" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <figcaption class="font-display text-lg text-cream/45">Photo {{ i }}</figcaption>
-                        <span class="text-xs font-light text-cream/35">Emplacement réservé</span>
-                    </div>
-                </figure>
-            {% endfor %}
-        </div>
-    </section>
 {% endblock %}
