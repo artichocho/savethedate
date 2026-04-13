@@ -43,7 +43,7 @@
                 <div>
                     <h3 class="presentation-section-heading presentation-section-heading--sub mb-6 text-center">Autour de Clémence</h3>
                     {# Photos : fichiers dans assets/images/ (ex. assets/images/trombi/camille.jpg) + clé image: 'images/trombi/camille.jpg' sur chaque personne #}
-                    <div class="photo-grid grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="photo-grid grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
                         {% include 'pages/_presentations_trombi_cards.html.twig' with {
                             people: [
                                 { role: 'Témoin', is_temoin: true, name: 'Camille C.', phrase: 'Quelques mots sur cette personne.' },
@@ -57,7 +57,7 @@
 
                 <div>
                     <h3 class="presentation-section-heading presentation-section-heading--sub mb-6 text-center">Autour de Valentine</h3>
-                    <div class="photo-grid grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="photo-grid grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
                         {% include 'pages/_presentations_trombi_cards.html.twig' with {
                             people: [
                                 { role: 'Témoin', is_temoin: true, name: 'Doulce de D.', phrase: 'Quelques mots sur cette personne.' },
