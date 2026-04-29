@@ -9,4 +9,12 @@
         </span>
         <span>(et sous la supervision de Valentine, Sirius, et Nox)</span>
     </p>
+    {% set showSecretD20Link = false %}
+    {% if showSecretD20Link %}
+        <p class="mt-3">
+            <a href="{{ path('app_secret_d20') }}" class="text-xs uppercase tracking-[0.2em] text-cream/55 no-underline transition hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-cream focus-visible:outline-offset-2">
+                Surprise
+            </a>
+        </p>
+    {% endif %}
 </footer>

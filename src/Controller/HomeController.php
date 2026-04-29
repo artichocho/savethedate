@@ -64,4 +64,10 @@ final class HomeController extends AbstractController
     {
         return $this->render('pages/presentations.html.twig');
     }
+
+    #[Route('/secret-d20', name: 'app_secret_d20')]
+    public function secretD20(): Response
+    {
+        return $this->render('pages/secret_d20.html.twig');
+    }
 }
