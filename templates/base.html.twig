@@ -34,18 +34,18 @@
 
         <div class="relative z-10">
             <header class="site-header sticky top-0 z-50 w-full border-b border-cream/10 bg-forest/90 shadow-[0_4px_30px_rgb(0_0_0/0.35)] backdrop-blur-md" role="banner">
-                <div class="relative flex w-full max-w-none items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-10 md:gap-8 md:py-4">
-                    <a href="{{ path('app_home') }}" class="header-brand group relative z-20 flex min-w-0 max-w-[min(100%,46vw)] shrink-0 items-center justify-start gap-3 sm:gap-5 md:max-w-[36%] lg:max-w-[38%] no-underline">
-                        <img src="{{ asset('logo/Yellow.png') }}" alt="" width="160" height="96" class="h-14 w-auto shrink-0 object-contain object-left drop-shadow-[0_2px_14px_rgb(0_0_0/0.4)] transition group-hover:scale-[1.02] sm:h-16 md:h-[4.75rem]">
-                        <span class="header-brand-title md:hidden text-[clamp(1.5rem,5vw,2rem)] leading-tight tracking-wide text-cream [text-shadow:0_2px_16px_rgb(0_0_0/0.25)]">
+                <div class="relative flex w-full max-w-none items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-10 md:gap-8 md:py-4">
+                    <a href="{{ path('app_home') }}" class="header-brand group relative z-20 flex min-w-0 max-w-[calc(100%-4.5rem)] shrink items-center justify-start gap-2 sm:gap-5 md:max-w-[36%] lg:max-w-[38%] no-underline">
+                        <img src="{{ asset('logo/Yellow.png') }}" alt="" width="160" height="96" class="h-12 w-auto shrink-0 object-contain object-left drop-shadow-[0_2px_14px_rgb(0_0_0/0.4)] transition group-hover:scale-[1.02] sm:h-16 md:h-[4.75rem]">
+                        <span class="header-brand-title lg:hidden text-[clamp(1.5rem,5vw,2rem)] leading-tight tracking-wide text-cream [text-shadow:0_2px_16px_rgb(0_0_0/0.25)]">
                             C &amp; V
                         </span>
-                        <span class="header-brand-title hidden min-w-0 truncate text-[clamp(1.35rem,4.5vw,2.15rem)] leading-tight tracking-wide text-cream [text-shadow:0_2px_16px_rgb(0_0_0/0.25)] md:block md:whitespace-normal md:overflow-visible">
+                        <span class="header-brand-title hidden min-w-0 truncate text-[clamp(1.35rem,4.5vw,2.15rem)] leading-tight tracking-wide text-cream [text-shadow:0_2px_16px_rgb(0_0_0/0.25)] lg:block lg:whitespace-normal lg:overflow-visible">
                             Clémence &amp; Valentine
                         </span>
                     </a>
 
-                    <nav class="pointer-events-auto ml-auto hidden items-center gap-4 text-[0.65rem] font-semibold uppercase tracking-[0.22em] lg:gap-7 lg:text-[0.72rem] lg:tracking-[0.28em] md:flex" aria-label="Navigation principale">
+                    <nav class="pointer-events-auto ml-auto hidden items-center gap-4 text-[0.65rem] font-semibold uppercase tracking-[0.22em] lg:gap-7 lg:text-[0.72rem] lg:tracking-[0.28em] lg:flex" aria-label="Navigation principale">
                         <a href="{{ path('app_home') }}" class="whitespace-nowrap no-underline transition hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-cream focus-visible:outline-offset-2 {{ route == 'app_home' ? 'text-gold' : 'text-cream/85' }}">Accueil</a>
                         <a href="{{ path('app_presentations') }}" class="whitespace-nowrap no-underline transition hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-cream focus-visible:outline-offset-2 {{ route == 'app_presentations' ? 'text-gold' : 'text-cream/85' }}">Présentations</a>
                         <a href="{{ path('app_informations') }}" class="whitespace-nowrap no-underline transition hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-cream focus-visible:outline-offset-2 {{ route == 'app_informations' ? 'text-gold' : 'text-cream/85' }}">Informations pratiques</a>
@@ -54,7 +54,7 @@
                         <a href="{{ path('app_liste_mariage') }}" class="whitespace-nowrap no-underline transition hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-cream focus-visible:outline-offset-2 {{ route == 'app_liste_mariage' ? 'text-gold' : 'text-cream/85' }}">Liste de mariage</a>
                     </nav>
 
-                    <div class="relative ml-auto shrink-0 md:hidden">
+                    <div class="relative ml-auto shrink-0 lg:hidden">
                         <input type="checkbox" id="nav-toggle" class="peer sr-only">
                         <label for="nav-toggle" id="nav-burger" class="relative z-[120] inline-flex cursor-pointer rounded-lg border border-cream/20 bg-olive/50 p-2 text-cream shadow-sm backdrop-blur-sm transition hover:border-cream/35 hover:bg-olive/70" aria-controls="mobile-menu">
                             <span class="sr-only">Ouvrir ou fermer le menu</span>
