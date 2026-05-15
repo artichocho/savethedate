@@ -60,7 +60,7 @@ jobs:
           done
           mkdir -p _site
           curl -fsS "http://127.0.0.1:8080${GITHUB_PAGES_BASE_PATH}/" -o _site/index.html
-          for path in presentations informations foire-aux-questions nous-contacter liste-mariage; do
+          for path in presentations informations foire-aux-questions nous-contacter liste-mariage secret-d20; do
             mkdir -p "_site/$path"
             curl -fsS "http://127.0.0.1:8080${GITHUB_PAGES_BASE_PATH}/$path" -o "_site/$path/index.html"
           done
